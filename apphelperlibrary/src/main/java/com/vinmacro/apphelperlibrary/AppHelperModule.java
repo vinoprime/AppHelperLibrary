@@ -12,17 +12,21 @@ public class AppHelperModule {
 
     private String TAG = "AppHelperModule";
 
-    private static AppHelperModule appHelperModule;
+//    private static AppHelperModule appHelperModule;
 
     private Activity activity;
 
-    private AppHelperModule(Activity activity) {
-        this.activity = activity;
-    }
+//    private AppHelperModule(Activity activity) {
+//        this.activity = activity;
+//    }
 
-    public static AppHelperModule getInstance(Activity a) {
-        if (appHelperModule == null) appHelperModule = new AppHelperModule(a);
-        return appHelperModule;
+//    public static AppHelperModule getInstance(Activity a) {
+//        if (appHelperModule == null) appHelperModule = new AppHelperModule(a);
+//        return appHelperModule;
+//    }
+
+    public AppHelperModule(Activity activity) {
+        this.activity = activity;
     }
 
     public void installAPK(File apkFile) {
@@ -40,12 +44,12 @@ public class AppHelperModule {
     }
 
 
-    public void openStorageSettings(){
+    public void openStorageSettings() {
         Intent i = new Intent(Settings.ACTION_MEMORY_CARD_SETTINGS);
         activity.startActivity(i);
     }
 
-    public void openGallery(){
+    public void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         activity.startActivityForResult(intent, 0);
     }
