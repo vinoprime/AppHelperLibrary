@@ -3,6 +3,7 @@ package com.vinmacro.apphelperlibrary;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 
@@ -52,5 +53,14 @@ public class AppHelperModule {
     public void openGallery() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         activity.startActivityForResult(intent, 0);
+    }
+
+    public void openGalleryTypeA(){
+        Intent iH = new Intent(Intent.ACTION_PICK);
+        File pictureDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        String pictDirPath = pictureDir.getPath();
+        Uri data = Uri.parse(pictDirPath);
+        iH.setDataAndType(data, "image/*");
+        activity.startActivityForResult(iH, 111);
     }
 }
